@@ -1,25 +1,48 @@
 /* Import Open Props */
 @import url('https://unpkg.com/open-props');
+@import url('https://unpkg.com/open-props/font-sizes.min.css');
+@import url('https://unpkg.com/open-props/font-weights.min.css');
 
+
+/* Define CSS Variables */
+:root {
+    --mint-tulip: #cbf6e7;
+    --cardinal-pink: #810273;
+    --midnight-green: #084C61;
+}
 
 /* Set global styles */
 body {
     font-family: 'Font-Antique', serif;
     margin: 0;
     padding: 0;
-    background-color: var(--mint-tulip, #cbf6e7);
-    color: var(--cardinal-pink, #810273);
-    color: var(--midnight-green, #084C61);
-
+    background-color: var(--mint-tulip);
+    color: var(--midnight-green);
     scroll-behavior: smooth;
+}
+
+section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
 }
 
 /* Hero Section */
 .hero-section {
-    background-color: var(--cardinal-pink);
-    color: var(--mint-tulip);
+    background-color: var(--mint-tulip);
+    color: var(--midnight-green);
     position: relative;
     overflow: hidden;
+    min-height: 100vh;
 }
 
 /* Hero Content */
@@ -30,50 +53,49 @@ body {
     margin: 0 auto;
     /* Maintain aspect ratio based on artboard dimensions */
     height: 0;
-    padding-bottom: 87.5%; /* (1050 / 1200) * 100% */
+    padding-bottom: 59%; 
 }
 
 /* Graphic Boxes */
 .graphic-boxes {
     position: absolute;
-    left: 66.57%;
-    top: 35%;
+    left: 33.38%;
+    top: 1.2%;
     width: 60.38%;
     height: auto;
-    transform: translate(-50%, -50%) translateY(var(--parallax-offset-boxes, 0));
+    transform: translateY(var(--parallax-offset-boxes, 0)); 
     z-index: 4;
 }
 
 /* Circle Left */
 .circle-left {
     position: absolute;
-    left: 50.08%;
-    top: 35.58%;
-    width: 35.42%;
+    left: 32.37%;
+    top: 5.10%;
+    width: 35.42%; /* Assuming the width remains the same */
     height: auto;
-    transform: translate(-50%, -50%) translateY(var(--parallax-offset-circle-left, 0));
+    transform: translateY(var(--parallax-offset-circle-left, 0)); 
     z-index: 1;
 }
 
 /* Circle Right */
 .circle-right {
     position: absolute;
-    left: 93.25%;
-    top: 59.07%;
-    width: 34.76%;
+    left: 75.87%;
+    top: 40.77%;
+    width: 34.76%; /* Assuming the width remains the same */
     height: auto;
-    transform: translate(-50%, -50%) translateY(var(--parallax-offset-circle-right, 0));
+    transform: translateY(var(--parallax-offset-circle-right, 0)); 
     z-index: 3;
 }
 
 /* Steffi's Photo */
 .profile-photo {
     position: absolute;
-    left: 77.23%;
-    top: 39.00%;
-    width: 41.98%;
+    left: 56.24%;
+    top: 12.03%;
+    width: 41.98%; 
     height: auto;
-    transform: translate(-50%, -50%); /* No parallax effect */
     z-index: 2;
 }
 
@@ -84,8 +106,11 @@ body {
     left: 10%;
     transform: translateY(-50%);
     color: var(--midnight-green);
-    font-size: 3em;
-    font-family: 'Font-Antique', serif;
+    font-size: 4.5rem;
+    letter-spacing: 3px;
+    text-shadow: 1px 1px 2px #1B98E0;
+    font-weight:  var(--font-weight-2);
+    font-family: 'Bagel Fat One';
     margin: 0;
     z-index: 5;
 }
@@ -96,41 +121,91 @@ body {
     left: 10%;
     transform: translateY(-50%);
     color: var(--midnight-green);
-    font-size: var(--font-size-8);
-    font-weight: var(--font-weight-8);
-    font-family: 'Open Sans', sans-serif;
+    font-size: var(--font-size-4); 
+    font-weight:  var(--font-weight-3);
+    font-family: 'Indie Flower';
     margin: 0;
     z-index: 5;
 }
 
-/* Main Navigation */
+/* Navigation Menu */
 .main-nav {
-    background-color: var(--mint-tulip);
-    padding: 10px;
-    text-align: center;
+    background-color: var(--cardinal-pink);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Styles when scrolled past Steffi's photo */
+.main-nav.scrolled-past-photo {
+    background-color: var(--cardinal-pink); /* Adjust if you want a different color */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation Container */
+.nav-container {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    width: 100%;
+    height: 70px;
+    align-items: center;
+}
+
+/* Navigation Tabs */
 .main-nav ul {
+    display: flex;
+    flex-direction: row;
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex;
-    justify-content: center;
+    flex: 1;
 }
 
 .main-nav li {
-    margin: 0 15px;
+    flex: 1;
 }
 
-.main-nav a {
-    color: var(--cardinal-pink);
-    text-decoration: none;
+.nav-tab {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
     font-weight: bold;
+    letter-spacing: 0.1rem;
+    text-decoration: none;
+    height: 100%;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.nav-tab:hover {
+    color: white;
+    background: var(--midnight-green);
+}
+
+/* Navigation Tab Slider */
+.nav-tab-slider {
+    position: absolute;
+    bottom: 0;
+    height: 6px;
+    background: var(--midnight-green);
+    transition: left 0.3s ease, width 0.3s ease;
+    left: 0;
+    width: 0;
+}
+
+@media (max-width: 768px) {
+    .nav-tab {
+        font-size: 0.8rem;
+    }
 }
 
 /* Main Content Styles */
 main {
     padding: 20px;
+    margin-top: 0;
 }
 
 h2 {
@@ -189,6 +264,8 @@ button {
 
     .profile-photo {
         width: 60%; /* Increase size for better visibility on small screens */
+        left: 80%;
+        top: 50%;
     }
 
     .graphic-boxes,
@@ -197,13 +274,15 @@ button {
         width: 80%; /* Adjust graphic sizes */
     }
 
-    .hero-content h1 {
-        font-size: 1.5em;
-        top: 85%;
+    .hero-title {
+        font-size: 2em;
+        top: 25%;
+        left: 5%;
     }
 
-    .hero-content p {
-        font-size: 1em;
-        top: 92%;
+    .hero-subtitle {
+        font-size: 1.2em;
+        top: 35%;
+        left: 5%;
     }
 }
