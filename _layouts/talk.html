@@ -1,0 +1,44 @@
+---
+layout: default
+---
+<article class="prose">
+  <header class="page-header">
+    <h1>{{ page.title }}</h1>
+    {%- if page.abstract -%}<p class="lede">{{ page.abstract | markdownify }}</p>{%- endif -%}
+    <ul class="meta">
+      {%- if page.format -%}<li><strong>Format:</strong> {{ page.format | join: ", " }}</li>{%- endif -%}
+      {%- if page.length -%}<li><strong>Length:</strong> {{ page.length }}</li>{%- endif -%}
+      {%- if page.audience -%}<li><strong>Audience:</strong> {{ page.audience }}</li>{%- endif -%}
+      {%- if page.requirements -%}<li><strong>AV:</strong> {{ page.requirements }}</li>{%- endif -%}
+    </ul>
+    {%- if page.cta_label and page.cta_href -%}
+      <p><a class="button" href="{{ page.cta_href | relative_url }}">{{ page.cta_label }}</a></p>
+    {%- endif -%}
+  </header>
+  {{ content }}
+  {%- if page.past_deliveries -%}
+    <section>
+      <h2>Past deliveries</h2>
+      <ul>
+        {%- for e in page.past_deliveries -%}
+          <li><a href="{{ e.link }}">{{ e.event }}</a> — {{ e.date }}</li>
+        {%- endfor -%}
+      </ul>
+    </section>
+  {%- endif -%}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "{{ page.title | escape }}",
+    "eventAttendanceMode": "https://schema.org/MixedEventAttendanceMode",
+    "startDate": "{{ page.date | default: site.time | date_to_xmlschema }}",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "description": {{ page.abstract | jsonify }},
+    "performer": {"@type":"Person","name":"Dr. Steffi Kohl"},
+    "organizer": {"@type":"Organization","name": ""},
+    "location": {"@type":"Place","name": "", "address": ""},
+    "url": "{{ page.url | absolute_url }}"
+  }
+  </script>
+</article>

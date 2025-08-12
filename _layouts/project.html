@@ -1,0 +1,17 @@
+---
+layout: default
+---
+<article class="prose">
+  <header class="page-header">
+    <h1>{{ page.title }}</h1>
+    {%- if page.summary -%}<p class="lede">{{ page.summary }}</p>{%- endif -%}
+    {%- if page.tags -%}<ul class="tags">{% for t in page.tags %}<li>{{ t }}</li>{% endfor %}</ul>{%- endif -%}
+  </header>
+  {{ content }}
+  {%- if page.links -%}
+    <section class="stack gap-m">
+      <h2>Artifacts</h2>
+      <ul>{%- for l in page.links -%}<li><a href="{{ l.url }}">{{ l.label }}</a></li>{%- endfor -%}</ul>
+    </section>
+  {%- endif -%}
+</article>

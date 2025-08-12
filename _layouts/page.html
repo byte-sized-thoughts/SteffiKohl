@@ -1,0 +1,10 @@
+---
+layout: default
+---
+<article class="prose">
+  <header class="page-header">
+    <h1>{{ page.title | default: site.title }}</h1>
+    {%- if page.subtitle -%}<p class="lede">{{ page.subtitle }}</p>{%- endif -%}
+  </header>
+  {{ content }}
+</article>

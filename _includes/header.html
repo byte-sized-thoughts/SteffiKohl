@@ -1,0 +1,10 @@
+<header class="site-header">
+  <a class="wordmark" href="{{ '/' | relative_url }}">Dr. Steffi Kohl</a>
+  <nav aria-label="Primary">
+    <ul class="nav">
+      {%- for item in site.nav -%}
+        <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+      {%- endfor -%}
+    </ul>
+  </nav>
+</header>

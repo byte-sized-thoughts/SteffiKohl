@@ -1,0 +1,47 @@
+title: "Dr. Steffi Kohl"
+description: "Human‑centred systems & data — research, speaking, projects"
+url: "" 
+baseurl: "" 
+permalink: /:collection/:name/
+markdown: kramdown
+theme: null
+
+collections:
+  projects:
+    output: true
+    permalink: /research/:name/
+  talks:
+    output: true
+    permalink: /speaking/:name/
+  posts:
+    output: true
+
+defaults:
+  - scope: {path: "", type: projects}
+    values: {layout: project}
+  - scope: {path: "", type: talks}
+    values: {layout: talk}
+  - scope: {path: ""}
+    values: {layout: page}
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+exclude:
+  - README.md
+  - node_modules
+  - package.json
+  - package-lock.json
+
+nav:
+  - title: Home
+    url: /
+  - title: Speaking
+    url: /speaking/
+  - title: Research
+    url: /research/
+  - title: About
+    url: /about/
+  - title: Contact
+    url: /contact/
