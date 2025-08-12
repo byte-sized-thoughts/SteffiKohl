@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Research"
-subtitle: "Selected projects in human‑data interaction, participatory methods, and open science."
+subtitle: "Selected projects in human‑data interaction, participatory methods, and open science stuff."
 permalink: /research/
 ---
 <div data-filter-tags class="grid" style="margin-bottom: var(--size-6)">
